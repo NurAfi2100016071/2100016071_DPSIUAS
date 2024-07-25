@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Users = sequelize.define('User', {
+  const User = sequelize.define('User', {
     id_user: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -29,5 +29,5 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'users' // sesuaikan dengan referensi dalam model `Peminjaman`
   });
 
-  return Users;
+  return User;
 };

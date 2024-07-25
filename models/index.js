@@ -21,22 +21,22 @@ const sequelize = new Sequelize(
 const db = {};
 
 // Import Models
-const Users = require('./user')(sequelize, Sequelize.DataTypes);
+const User = require('./user')(sequelize, Sequelize.DataTypes);
 const InventoryItem = require('./inventoryitem')(sequelize, Sequelize.DataTypes);
 const Peminjaman = require('./peminjaman')(sequelize, Sequelize.DataTypes);
 const HistoryPeminjaman = require('./history_peminjaman')(sequelize, Sequelize.DataTypes);
 const Notifikasi = require('./notifikasi')(sequelize, Sequelize.DataTypes);
 
 // Define Associations
-Users.hasMany(Peminjaman, { foreignKey: 'id_user' });
+User.hasMany(Peminjaman, { foreignKey: 'id_user' });
 InventoryItem.hasMany(Peminjaman, { foreignKey: 'id_inventory' });
-Peminjaman.belongsTo(Users, { foreignKey: 'id_user' });
+Peminjaman.belongsTo(User, { foreignKey: 'id_user' });
 Peminjaman.belongsTo(InventoryItem, { foreignKey: 'id_inventory' });
 
 // Add models to db object
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.Users = Users;
+db.User = User;
 db.InventoryItem = InventoryItem;
 db.Peminjaman = Peminjaman;
 db.HistoryPeminjaman = HistoryPeminjaman;
